@@ -4,7 +4,7 @@ site_url: "https://jahagirdar.github.io/cocotbext-dyulib"
 repo_url: "https://github.com/jahagirdar/cocotbext-dyulib"
 repo_name: "jahagirdar/cocotbext-dyulib"
 site_dir: "site"
-watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/cocotbext_dyulib]
+watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/cocotbext/dyulib]
 copyright: Copyright &copy; 2024 Vijayvithal Jahagirdar
 edit_uri: edit/main/docs/
 
