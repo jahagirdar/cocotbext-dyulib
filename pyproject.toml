@@ -10,7 +10,8 @@ license = {text = "BSD-2-Clause"}
 readme = "README.md"
 requires-python = ">=3.8"
 keywords = []
-dynamic = ["version"]
+#dynamic = ["version"]
+version ="0.0.4"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -29,6 +30,8 @@ classifiers = [
 ]
 dependencies = [
     "cocotb-coverage>=1.2.0",
+    "click>=8.1.7",
+    "editables>=0.5",
 ]
 
 [project.urls]
@@ -45,7 +48,7 @@ Funding = "https://github.com/sponsors/jahagirdar"
 dyu = "cocotbext.dyulib.cli:main"
 
 [tool.pdm]
-version = {source = "scm"}
+#version = {source = "scm"}
 plugins = [
     "pdm-multirun",
 ]

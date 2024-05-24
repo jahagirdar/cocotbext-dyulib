@@ -1,17 +1,20 @@
 from cocotb_coverage.coverage import merge_coverage, coverage_db
-from .dyutools import find_all
+from .dyutools import find_all_match
 import logging
 import xml.etree.ElementTree as ET
 import click
+from pathlib import Path
 
 
 @click.command()
 @click.option('--path', prompt="The path from where to search")
-@click.option('--filename', prompt="The name of the coverage xml file")
-def fcov_merge(path='./', filename='coverage.xml'):
+@click.option('--pattern', prompt="The pattern forcoverage xml file")
+def fcov_merge(path='./', pattern='.*coverage.xml'):
     log = logging.getLogger("merge coverage")
-    all_files = find_all(filename, path)
+    all_files = find_all_match(pattern, path)
     log.info(f"Coverage files found {all_files}")
+    if Path("functional_coverage.xml").exists():
+        Path("functional_coverage.xml").rename("old_functional_coverage.xml")
     merge_coverage(log.info, "functional_coverage.xml", *all_files)
     root = ET.parse("functional_coverage.xml")
     top = root.getroot()
