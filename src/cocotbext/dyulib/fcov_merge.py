@@ -7,9 +7,9 @@ from pathlib import Path
 
 
 @click.command()
-@click.option('--path', prompt="The path from where to search")
-@click.option('--pattern', prompt="The pattern forcoverage xml file")
-def fcov_merge(path='./', pattern='.*coverage.xml'):
+@click.option("--path", prompt="The path from where to search")
+@click.option("--pattern", prompt="The pattern forcoverage xml file")
+def fcov_merge(path="./", pattern=".*coverage.xml"):
     log = logging.getLogger("merge coverage")
     all_files = find_all_match(pattern, path)
     log.info(f"Coverage files found {all_files}")
@@ -20,13 +20,13 @@ def fcov_merge(path='./', pattern='.*coverage.xml'):
     top = root.getroot()
     section = ET.Element("section")
     field = ET.SubElement(section, "field")
-    field.set("name", top.attrib['abs_name'])
-    field.set("value", top.attrib['cover_percentage'])
+    field.set("name", top.attrib["abs_name"])
+    field.set("value", top.attrib["cover_percentage"])
     for e in root.findall(".//*[@coverage]"):
         field = ET.SubElement(section, "field")
-        field.set("name", e.attrib['abs_name'])
-        field.set("value", e.attrib['cover_percentage'])
-    ET.ElementTree(element=section).write('fcov_report.xml')
+        field.set("name", e.attrib["abs_name"])
+        field.set("value", e.attrib["cover_percentage"])
+    ET.ElementTree(element=section).write("fcov_report.xml")
 
     coverage_db.report_coverage(log.info)
 

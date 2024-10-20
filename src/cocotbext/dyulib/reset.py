@@ -14,7 +14,7 @@ async def reset_n(
     reset_time=(100, "ns"),
     clock_cycles_in_reset=0,
     post_clock_quiet_time=(0, "ns"),
-    active_low=True
+    active_low=True,
 ):
     if active_low:
         rst = 0
